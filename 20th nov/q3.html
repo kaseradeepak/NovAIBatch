@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div > h1 > span {
+            color: blue;
+        }
+
+
+        /* > (greater than symbol) is used for direct child. */
+        /* Select the span element which is a descandant of div. */
+        div > span > h1 > span {
+            color: blueviolet;
+        }
+    </style>
+
+</head>
+<body>
+    
+
+    <!-- Make the following text blue : This is the first span element. -->
+
+    <div>
+        <h1>
+            <span>
+                This is the first span element.
+            </span>
+        </h1>
+    </div>
+
+    <div>
+        <span>
+            <h1>
+                <span>
+                    This is the second span element.
+                </span>
+            </h1>
+        </span>
+    </div>
+</body>
+</html>
