@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .inActiveButton {
+            background-color: red;
+        }
+
+        .activeButton {
+            background-color: green;
+        }
+    </style>
+
+</head>
+<body>
+    <button class="inActiveButton">I am inactive.</button>
+
+    <script>
+        let toggleButton = document.querySelector('.inActiveButton')
+        console.log(toggleButton)
+
+        toggleButton.addEventListener('click', function() {
+            //If the class of the button is inActive then after click change it to 
+            //active and vice-versa.
+
+
+            //classList function gives the list of all the classes that element belongs to.
+            console.log(toggleButton.classList)
+
+            if(toggleButton.classList.contains('inActiveButton')) {
+                // Make the button active.
+                // Remove inActiveButton class from the class list and add activeButton.
+                toggleButton.classList.remove('inActiveButton')
+                toggleButton.classList.add('activeButton')
+                toggleButton.innerText = 'I am active'
+            } else {
+                toggleButton.classList.remove('activeButton')
+                toggleButton.classList.add('inActiveButton')
+                toggleButton.innerText = 'I am Inactive'
+            }
+        })
+    </script>
+</body>
+</html>

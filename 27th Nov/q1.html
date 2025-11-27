@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body-1">
+    <button id="btn-1">Click me!</button>
+    <!-- <button id="btn-2">Click me!</button>
+    <button id="btn-3">Click me!</button>
+    <button id="btn-4">Click me!</button>
+    <button id="btn-5">Click me!</button> -->
+
+    <!-- Task - On clicking the button, we need to add Hello on the web page. -->
+
+
+    <script>
+        //Step-1. Select the corresponding button. 2 functions - getElementById & querySelector.
+
+        // document -> DOM
+        let btn = document.getElementById('btn-1')
+        console.log(btn)
+
+        //Step-2. Implement click button event.
+        btn.addEventListener('click', function(){
+            //What should we do incase the button is clicked.
+            // console.log('Hello') // We need to add Hello on the web page not on the console.
+
+            //Step-3 : Create an element with Hello Text written.
+            let helloDiv = document.createElement('div')
+            console.log(helloDiv)
+
+            helloDiv.innerText = 'Hello'
+
+            //Step-4 : Now attach the newly created div to the HTML Body.
+            //Select the body and append the div as a child.
+
+            let documentBody = document.getElementById('body-1')
+
+            documentBody.appendChild(helloDiv)
+        })
+
+    </script>
+</body>
+</html>

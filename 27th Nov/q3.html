@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>2 + 2 = 22</p>
+
+    <button id='btn-1'>Fix equation.</button>
+
+    <!-- Write JS Code to fix the above statement. -->
+    <!-- Change the content of paragraph element in HTML document. -->
+    <script>
+        let btn = document.getElementById('btn-1')
+
+        btn.addEventListener('click', function(){
+            // Select the paragraph tag from HTML document.
+            let paragraphElement = document.querySelector('p')
+            paragraphElement.innerText = '2 + 2 = 4'
+        })
+    </script> 
+</body>
+</html>
