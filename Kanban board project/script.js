@@ -4,6 +4,7 @@ let modalCont = document.querySelector('.modal-cont')
 let mainCont = document.querySelector('.main-cont')
 let taskArea = document.querySelector('.textArea-cont')
 let allPriorityColors = document.querySelectorAll('.priority-color')
+let toolBoxPriorityColors = document.querySelectorAll('.color')
 
 let isModalVisible = false 
 
@@ -31,7 +32,6 @@ addBtn.addEventListener('click', function() {
 modalCont.addEventListener('keydown', function(event) {
     if(event.key == "Shift") {
         //Create a ticket.
-
         let ticketCont = document.createElement('div')
         ticketCont.setAttribute("class", "ticket-cont")
 
@@ -59,6 +59,7 @@ modalCont.addEventListener('keydown', function(event) {
 
         //Handle lock for this ticket.
         handleLock(ticketCont)
+
         handleTicketColor(ticketCont)
     }
 })
@@ -89,7 +90,6 @@ function handleLock(ticket) {
 
 
 // Moving the active class to the color which has been clicked by the user.
-
 allPriorityColors.forEach(function(colorElem) {
     colorElem.addEventListener('click', function() {
         allPriorityColors.forEach(function(priorityColor) {
@@ -109,19 +109,57 @@ function handleTicketColor(ticket) {
     ticketColorBand.addEventListener('click', function() {
         let currentColor = ticketColorBand.style.backgroundColor;
 
-
         //Find the index of current color in the list of colors.
         let currentColorIndex
-        for(let i = 0; i < 4; i++) {
+        for(let i = 0; i < colors.length; i++) {
             if(colors[i] === currentColor) {
                 currentColorIndex = i
             }
         }
 
-        currentColorIndex++
+        let newColorIndex = (currentColorIndex + 1) % colors.length
+        let newColor = colors[newColorIndex]
 
-        //TODO: Implement modulo logic.
-
-        console.log(currentColorIndex)
+        ticketColorBand.style.backgroundColor = newColor
     })
 }
+
+toolBoxPriorityColors.forEach(function(color) {
+    color.addEventListener("click", function() {
+        let allTickets = document.querySelectorAll('.ticket-cont') // all the tickets in the document.
+
+        let selectedColor = color.classList[0] // the first element in the classList is the color of the div element.
+        allTickets.forEach(function(ticket) {
+            let ticketColorBand = ticket.querySelector('.ticket-color')
+            if(ticketColorBand.style.backgroundColor === selectedColor) {
+                //This ticket should be visible.
+                ticket.style.display = "block"
+            } else {
+                ticket.style.display = "none"
+            }
+        })
+    })
+}) 
+
+
+/*
+
+x = 1, size = 4
+
+(x+1) % size
+
+x = 0 => 1%4 = 1
+x = 1 => 2%4 = 2
+x = 2 => 3%4 = 3
+x = 3 => 4%4 = 0
+
+
+m % n => [0, n-1]
+
+
+size = 100 => index : 0 to 99
+
+currentIndex = 99
+currentIndex + 1 = 100 % size = 0
+
+*/
